@@ -1,0 +1,10 @@
+@font-face {
+    font-family: SpaceGrotesk;
+    src: url(../assets/fonts/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf);
+}
+
+// defining mixing with two parameters
+@mixin font_size($size : 18px, $color : black){
+    font-size: $size;
+    color: $color;
+}
