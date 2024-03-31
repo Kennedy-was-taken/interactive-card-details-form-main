@@ -1,0 +1,25 @@
+// font styles
+@import url("../styles/font.scss");
+
+// responsive styles
+
+// gridview
+.card_information_container{
+    display: grid;
+    grid-template-rows: 35% 1fr;
+    width: 100%;
+    height: 100%;
+
+    // first grid
+    .card_background{
+        background-image: url("../assets/images/bg-main-mobile.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        grid-row-start: 1;
+    }
+
+    // second grid
+    .card_information{
+        grid-row-start: 2;
+    }
+}
