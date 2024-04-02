@@ -1,12 +1,12 @@
 // font styles
-@import url("../styles/font.scss");
+@import "../styles/font.scss";
 
 // responsive styles
 
 // gridview
 .card_information_container{
     display: grid;
-    grid-template-rows: 35% 1fr;
+    grid-template-rows: 30% 1fr 3%;
     width: 100%;
     height: 100%;
 
@@ -23,7 +23,15 @@
         display: flex;
         flex-direction: row;
         grid-row-start: 2;
-               
+    }
+
+    .attribution { 
+        @include font_size(1.5dvw);
+        text-align: center; 
+    }
+
+    .attribution a { 
+        color: hsl(228, 45%, 44%); 
     }
 }
 
@@ -33,26 +41,68 @@
     flex-direction: row;
     z-index: 1;
     top: 0px;
-    position: relative;
+    position: absolute;
     padding-left: 5dvw;
     padding-right: 5dvw;
     padding-top: 4.5dvh;
-    width: 100%;
+    width: 90%;
 
     .image_back_card{
-        display: flex;
-        position: relative;
-        margin-left: 0px;
-        margin-right: auto;
+        margin-left: auto;
+        margin-right: 0px;
     }
 
-    .image_front_card{
-        position: relative;
-        left: 0px;
-        z-index: 1;
+    .image_front_card{        
+        margin-top: 12dvh;
     }
+
+    .image_front_card, .image_front_card_details_logo{
+        position: absolute;
+        float: left;
+    }
+
+    .image_front_card_details_logo{
+        
+        padding-left: 5dvw;
+        padding-right: 5dvw;
+        padding-bottom: 2dvh;
+        width: 60%;
+
+        .image_front_card_logo{
+            display: flex;
+            margin-top: 14dvh;
+            margin-bottom: 6dvh;
+            width: 11dvw;
+        }
+
+        .image_front_card_number{
+            @include font_size(5dvw, white);
+        }
+
+        .image_front_card_container{
+            display: flex;
+            flex-direction: row;
+            margin-top: 1dvh;
+        }
+    }
+
+    .image_front_card_container{
+
+        .image_front_card_name{
+            @include font_size(3dvw, white);
+            margin-right: auto;
+            margin-left: 0px;
+        }
+
+        .image_front_card_date{
+            @include font_size(3dvw, white);
+            margin-right: 0px;
+            margin-left: auto;
+        }
+    }
+    
 
     .image_default_size{
-        height: 35dvw;
+        width: 70dvw;
     }
 }

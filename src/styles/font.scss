@@ -5,6 +5,7 @@
 
 // defining mixing with two parameters
 @mixin font_size($size : 18px, $color : black){
+    font-family: SpaceGrotesk;
     font-size: $size;
     color: $color;
 }
