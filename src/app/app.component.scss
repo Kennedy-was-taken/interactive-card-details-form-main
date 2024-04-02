@@ -20,6 +20,39 @@
 
     // second grid
     .card_information{
+        display: flex;
+        flex-direction: row;
         grid-row-start: 2;
+               
+    }
+}
+
+// z-index: 1, card images
+.image_container{
+    display: flex;
+    flex-direction: row;
+    z-index: 1;
+    top: 0px;
+    position: relative;
+    padding-left: 5dvw;
+    padding-right: 5dvw;
+    padding-top: 4.5dvh;
+    width: 100%;
+
+    .image_back_card{
+        display: flex;
+        position: relative;
+        margin-left: 0px;
+        margin-right: auto;
+    }
+
+    .image_front_card{
+        position: relative;
+        left: 0px;
+        z-index: 1;
+    }
+
+    .image_default_size{
+        height: 35dvw;
     }
 }
