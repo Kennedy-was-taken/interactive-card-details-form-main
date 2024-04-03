@@ -47,13 +47,24 @@
     padding-top: 4.5dvh;
     width: 90%;
 
+    .image_back_card, .image_front_card{
+        width: 70dvw;
+        height: 18dvh;
+    }
+
     .image_back_card{
         margin-left: auto;
         margin-right: 0px;
+        background-image: url("../assets/images/bg-card-back.png");
+        background-repeat:no-repeat;
+        background-size: 100%;
     }
 
     .image_front_card{        
         margin-top: 12dvh;
+        background-image: url("../assets/images/bg-card-front.png");
+        background-repeat:no-repeat;
+        background-size: 100%;
     }
 
     .image_front_card, .image_front_card_details_logo{
@@ -104,5 +115,6 @@
 
     .image_default_size{
         width: 70dvw;
+        height: 18dvh;
     }
 }
