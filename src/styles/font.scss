@@ -8,4 +8,11 @@
     font-family: SpaceGrotesk;
     font-size: $size;
     color: $color;
+    letter-spacing: 0.5vw;
+}
+
+// defining mixing with two parameters
+@mixin font_upper_case($size : 18px, $color : black){
+    @include font_size($size , $color);
+    text-transform: uppercase;
 }

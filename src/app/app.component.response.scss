@@ -1,0 +1,24 @@
+
+// mobile screen resolutions
+@mixin mobile_devices(){
+    
+    @media (min-width: 375px) and (max-width: 389px){
+
+        .image_back_card_sec_code{
+            @include font_size(2dvw, black);
+        }
+    }
+    
+    
+    @media (min-width: 390px) and (max-width: 414px){
+    
+        
+    }
+}
+
+
+
+//tablet screen resolutions
+
+
+// desktop screen resolutions
