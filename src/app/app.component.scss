@@ -1,8 +1,8 @@
 // font styles
 @import "../styles/font.scss";
 
-// responsive styles
-@import "../app/app.component.response.scss";
+// layout dimentions
+@import "../styles/device_dimensions.scss";
 
 // gridview
 .card_information_container{
@@ -74,7 +74,7 @@
     .image_front_card{        
         display: flex;
         flex-direction: column;
-        margin-top: 9dvh;
+        margin-top: 8.5dvh;
         background-image: url("../assets/images/bg-card-front.png");
         padding: 2dvh 4dvw;
 
@@ -120,4 +120,26 @@
 
 }
 
-// @include mobile_devices();
+//smaller tablet screen resolutions
+@media (min-width: $phones){
+
+
+}
+
+//larger tablet screen resolutions
+@media (min-width: $tablets){
+
+
+}
+
+// desktop screen resolutions
+@media (min-width: $desktops){
+
+
+}
+
+// larger desktop screen resolution
+@media (min-width: $lg_desktops){
+
+
+}
