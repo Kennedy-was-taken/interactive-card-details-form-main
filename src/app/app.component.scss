@@ -252,9 +252,78 @@
 
 }
 
+@media (min-width: $lg_tablets){
+
+    .card_information_container {
+        display: grid;
+        grid-template-columns: 35% 1fr;
+
+        .card_information {
+            .attribution {
+                @include font_size(0.8vw, black, 0.2vw);
+            }
+        }
+
+    }
+
+    .image_container{
+
+        .image_back_card, .image_front_card {
+            position: relative;
+            width: 30vw;
+            height: 25vh;
+        }
+
+        .image_back_card{
+            margin-left: 15vw;
+    
+            .image_back_card_sec_code{
+                @include font_size(1vw, white, 0.3vw);
+                margin-top: 11.5vh;
+                margin-left: auto;
+                margin-right: 3.5vw;
+            }
+        }
+
+        .image_front_card{        
+            margin-left: 8vw;
+
+            .image_front_card_logo{
+                margin-top: 3vh;
+                margin-left: 2.5vw;
+            }
+
+            .image_front_card_number{
+                margin-left: 2vw;
+                margin-bottom: 0px;
+                margin-top: auto;
+                @include font_size(1.6vw, white, 0.3vw);
+            }
+
+            .image_front_card_container{
+                margin-top: 2.5vh;
+                margin-bottom: 2vh;
+                
+                @include font_upper_case(0.8vw, white, 0.3vw);
+    
+                .image_front_card_name{
+                    margin-right: auto;
+                    margin-left: 1.7vw;
+                }
+        
+                .image_front_card_date{
+                    margin-right: 2dvw;
+                    margin-left: auto;
+                }
+            }
+        }    
+    }
+}
+
 // desktop screen resolutions
 @media (min-width: $desktops){
 
+    
 
 }
 
