@@ -7,7 +7,7 @@
 // gridview
 .card_information_container{
     display: grid;
-    grid-template-rows: 28% 1fr 3%;
+    grid-template-rows: 28% 1fr;
     width: 100%;
     height: 100%;
     
@@ -24,16 +24,22 @@
         display: flex;
         flex-direction: row;
         grid-row-start: 2;
+
+        .attribution { 
+            width: 100%;
+            @include font_size(1.5dvw);
+            text-align: center; 
+            margin-top: auto;
+            margin-bottom: 10px;
+
+            a { 
+                color: hsl(228, 45%, 44%); 
+            }
+        }
+    
     }
 
-    .attribution { 
-        @include font_size(1.5dvw);
-        text-align: center; 
-    }
-
-    .attribution a { 
-        color: hsl(228, 45%, 44%); 
-    }
+    
 }
 
 // z-index: 1, card images
@@ -65,7 +71,7 @@
 
         .image_back_card_sec_code{
             @include font_size(2dvw, white);
-            margin-top: 6.8dvh;
+            margin-top: 6.9dvh;
             margin-left: auto;
             margin-right: 9dvw;
         }
@@ -74,13 +80,13 @@
     .image_front_card{        
         display: flex;
         flex-direction: column;
-        margin-top: 8.5dvh;
+        margin-top: 9dvh;
         background-image: url("../assets/images/bg-card-front.png");
         padding: 2dvh 4dvw;
 
         .image_front_card_logo{
             display: flex;
-            height: 22%;
+            height: 25%;
             width: 22%;
         }
 
@@ -94,7 +100,7 @@
 
             display: flex;
             flex-direction: row;
-            margin-top: 2dvh;
+            margin-top: 3.5dvh;
             
             @include font_upper_case(2dvw, white);
 
@@ -122,7 +128,9 @@
 
 //smaller tablet screen resolutions
 @media (min-width: $phones){
-
+    .card_information_container{
+        
+    }
 
 }
 
