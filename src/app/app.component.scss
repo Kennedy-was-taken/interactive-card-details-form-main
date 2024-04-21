@@ -115,8 +115,6 @@
             }
         }
 
-        
-
     }
 
     .image_front_card{
@@ -137,7 +135,7 @@
     // gridview column
     .card_information_container {
         display: grid;
-        grid-template-columns: 35% 1fr;
+        grid-template-columns: 30% 1fr;
         grid-template-rows: none;
         width: 100%;
         height: 100%;
@@ -160,7 +158,7 @@
 
             .attribution {
                 width: 100%;
-                @include font_size(1.5dvw);
+                @include font_size(1dvw);
                 text-align: center;
                 margin-top: auto;
                 margin-bottom: 10px;
@@ -175,12 +173,80 @@
 
     // z-index: 1, card images
     .image_container {
+        display: grid;
+        grid-template-rows: 50% 1fr;
+        grid-gap: 2dvw;
+        padding-top: 0px;
+        height: 100%;
 
         // image global values
-        // .image_back_card, .image_front_card {
-        //     width: 35dvw;
-        //     height: 15dvh;
-        // }
+        .image_back_card, .image_front_card {
+            position: relative;
+            width: 35dvw;
+            height: 15dvh;
+            border-radius: 1dvw;
+        }
+
+        .image_back_card{
+            display: flex;
+            margin-left: 10dvw;
+            margin-right: 0px;
+            margin-top: 0;
+            grid-row-start: 2;
+    
+            .image_back_card_sec_code{
+                @include font_size(1.5dvw, white);
+                margin-top: 6.7dvh;
+                margin-left: auto;
+                margin-right: 4.5dvw;
+            }
+        }
+
+        .image_front_card{        
+            display: flex;
+            flex-direction: column;
+            margin-left: 5dvw;
+            margin-top: auto;
+            margin-bottom: 0px;
+            padding: 0px;
+            grid-row-start: 1;
+
+            .image_front_card_logo{
+                display: flex;
+                height: 18%;
+                width: 18%;
+                margin-top: 2dvh;
+                margin-left: 3dvw;
+            }
+
+            .image_front_card_number{
+                margin-left: 2dvw;
+                margin-bottom: 0px;
+                margin-top: auto;
+                @include font_size(1.8dvw, white);
+            }
+
+            .image_front_card_container{
+                margin-top: 2dvh;
+                margin-bottom: 1dvh;
+                
+                @include font_upper_case(1dvw, white);
+    
+                .image_front_card_name{
+                    margin-right: auto;
+                    margin-left: 1.7dvw;
+                }
+        
+                .image_front_card_date{
+                    margin-right: 2dvw;
+                    margin-left: auto;
+                }
+            }
+        }    
+
+        .image_front_card{
+            float: none;
+        }
     }
 
 
