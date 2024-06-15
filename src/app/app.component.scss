@@ -224,11 +224,16 @@
             grid-row-start: 1;
             grid-column-start: 2;
             justify-content: center;
+            align-items: center;
+            padding: 0px 0px 0px 15vw;
 
             .info-container {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
+                align-content: center;
+                width: 70%;
+                margin-top: auto;
 
                 .date_cvc {
                     display: grid;
@@ -269,37 +274,36 @@
                     justify-content: center;
                     align-items: center;
                     width: 100%;
-                    height: 6vh;
+                    height: 4vh;
                     background-color: var(--Very_dark_violet);
-                    @include font_size(3vw, var(--White));
-                    margin-top: 4dvh;
-                    border-radius: 3dvw;
+                    @include font_size(1.5vw, var(--White));
+                    margin-top: 2vh;
+                    border-radius: 1vw;
                     border-style: solid;
                 }
             }
 
             label {
-                margin: 2vh 0px;
-                @include font_upper_case(2vw, hsl(274, 8%, 36%));
+                margin: 1vh 0px;
+                @include font_upper_case(0.8vw, hsl(274, 8%, 36%));
                 font-weight: bold;
             }
 
             input {
                 border: 1px solid var(--Light_grayish_violet);
-                height: 4vh;
+                height: 3vh;
                 border-radius: 1vw;
                 width: 100%;
             }
 
             .attribution {
                 width: 100%;
-                @include font_size(1dvw);
+                @include font_size(0.8vw);
                 text-align: center;
-                margin-top: unset;
-                margin-bottom: 10px;
 
                 a {
                     color: hsl(228, 45%, 44%);
+                    letter-spacing: 0.3vw;
                 }
             }
 
@@ -393,10 +397,35 @@
         display: grid;
         grid-template-columns: 35% 1fr;
 
+        
+
         .card_information {
+
+            label {
+                margin: 1vh 0px;
+                @include font_upper_case(0.8vw, hsl(274, 8%, 36%));
+            }
+    
+            input {
+                height: 4vh;
+                border-radius: 0.8vw;
+                width: 100%;
+                margin-bottom: 1vh;
+            }
+
             .attribution {
                 @include font_size(0.8vw, black, 0.2vw);
             }
+
+            .info-container {
+
+                button{
+                    height: 6vh;
+                    @include font_size(1vw, var(--White));
+                    border-radius: 1vw;
+                }
+            }
+
         }
 
     }
@@ -453,6 +482,7 @@
             }
         }    
     }
+
 }
 
 // desktop screen resolutions
