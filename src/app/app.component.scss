@@ -71,7 +71,7 @@
                 justify-content: center;
                 align-items: center;
                 width: 100%;
-                height: 8dvh;
+                height: 6dvh;
                 background-color: var(--Very_dark_violet);
                 @include font_size(4.2dvw, var(--White));
                 margin-top: 4dvh;
@@ -88,9 +88,10 @@
 
         input {
             border: 1px solid var(--Light_grayish_violet);
-            height: 5dvh;
+            height: 4dvh;
             border-radius: 1.5dvw;
             width: 100%;
+            padding-left: 10px;
         }
 
         .attribution {
@@ -294,6 +295,7 @@
                 height: 3vh;
                 border-radius: 1vw;
                 width: 100%;
+                color: black;
             }
 
             .attribution {
@@ -317,6 +319,7 @@
         grid-gap: 2dvw;
         padding-top: 0px;
         height: 100%;
+        width: 40%;
 
         // image global values
         .image_back_card, .image_front_card {
@@ -408,7 +411,7 @@
     
             input {
                 height: 4vh;
-                border-radius: 0.8vw;
+                border-radius: 0.5vw;
                 width: 100%;
                 margin-bottom: 1vh;
             }
@@ -422,7 +425,8 @@
                 button{
                     height: 6vh;
                     @include font_size(1vw, var(--White));
-                    border-radius: 1vw;
+                    border-radius: 0.8vw;
+                    word-spacing: normal;
                 }
             }
 
@@ -435,7 +439,7 @@
         .image_back_card, .image_front_card {
             position: relative;
             width: 30vw;
-            height: 25vh;
+            height: 30vh;
         }
 
         .image_back_card{
@@ -443,7 +447,7 @@
     
             .image_back_card_sec_code{
                 @include font_size(1vw, white, 0.3vw);
-                margin-top: 11.5vh;
+                margin-top: 13.5vh;
                 margin-left: auto;
                 margin-right: 3.5vw;
             }
@@ -495,5 +499,13 @@
 // larger desktop screen resolution
 @media (min-width: $lg_desktops){
 
+    input {
+        border: 1vw solid var(--Light_grayish_violet);
+        height: 5dvh;
+        border-radius: 1vw;
+        width: 100%;
+        padding-left: 30px;
+        @include font_size(0.8vw, black, unset);
+    }
 
 }
