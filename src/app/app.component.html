@@ -11,29 +11,29 @@
         <div class="info-container">
 
             <!-- name holder -->
-            <label></label>
+            <label>cardholder name</label>
+            <input class="cardholder_name" placeholder="e.g Jane Appleased" type="text"/>
 
             <!-- number -->
-            <label></label>
+            <label>card number</label>
+            <input class="card_number" placeholder="e.g 1234 5678 9123 0000" type="number"/>
 
             <!-- date and the cvc -->
             <div class="date_cvc">
 
-                <!-- exp -->
-                <label></label>
-
                 <!-- mm\yy -->
-                <label></label>
-
+                <label class="date">exp. Date (mm/yy)</label>
+                <input class="mm" placeholder="MM" type="number"/>
+                <input class="yy" placeholder="YY" type="number"/>
 
                 <!-- cvc -->
-                <label></label>
+                <label class="cvc">cvc</label>
+                <input class="cvc_digit" placeholder="e.g 123" type="number"/>
 
-                
             </div>
 
             <!-- Confirm button -->
-
+            <button type="button">Confirm</button>
         </div>
         
         <div class="attribution">
