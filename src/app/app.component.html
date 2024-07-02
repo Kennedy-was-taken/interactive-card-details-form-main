@@ -9,31 +9,33 @@
     
         <!-- input area -->
         <div class="info-container">
-
-            <!-- name holder -->
-            <label>cardholder name</label>
-            <input class="cardholder_name" placeholder="e.g Jane Appleased" type="text"/>
-
-            <!-- number -->
-            <label>card number</label>
-            <input class="card_number" placeholder="e.g 1234 5678 9123 0000" type="number"/>
-
-            <!-- date and the cvc -->
-            <div class="date_cvc">
-
-                <!-- mm\yy -->
-                <label class="date">exp. Date (mm/yy)</label>
-                <input class="mm" placeholder="MM" type="number"/>
-                <input class="yy" placeholder="YY" type="number"/>
-
-                <!-- cvc -->
-                <label class="cvc">cvc</label>
-                <input class="cvc_digit" placeholder="e.g 123" type="number"/>
-
-            </div>
-
-            <!-- Confirm button -->
-            <button type="button">Confirm</button>
+        
+                <!-- name holder -->
+                <label>cardholder name</label>
+                <input class="cardholder_name" name="card_holder" placeholder="e.g Jane Appleased" maxlength="30" type="text"
+                    [(ngModel)]="card_holder" />
+        
+                <!-- number -->
+                <label>card number</label>
+                <input id="card_number_value" class="card_number" name="card_number"  placeholder="e.g 1234 5678 9123 0000" maxlength="16" type="text"
+                    [(ngModel)]="card_number"  />
+        
+                <!-- date and the cvc -->
+                <div class="date_cvc">
+        
+                    <!-- mm\yy -->
+                    <label class="date">exp. Date (mm/yy)</label>
+                    <input class="mm" placeholder="MM" type="text" name="exp_mm" [(ngModel)]="exp_mm" maxlength="2" />
+                    <input class="yy" placeholder="YY" type="text" name="exp_yy" [(ngModel)]="exp_yy" maxlength="2" />
+        
+                    <!-- cvc -->
+                    <label class="cvc">cvc</label>
+                    <input class="cvc_digit" type="text" placeholder="e.g 123" maxlength="3" name="cvc" type="text" [(ngModel)]="cvc" />
+        
+                </div>
+        
+                <!-- Confirm button -->
+                <button type="click" (ngSubmit)="onSubmit()">Confirm</button>
         </div>
         
         <div class="attribution">
@@ -52,18 +54,18 @@
 
     <!-- back card -->
     <div class="image_back_card">
-        <label class="image_back_card_sec_code">000</label>
+        <label class="image_back_card_sec_code" for="cvc">{{cvc}}</label>
     </div>
 
     <!-- front card -->
     <div class="image_front_card">
 
         <img src="../assets/images/card-logo.svg" alt="front card logo" class="image_front_card_logo"/>
-        <label class="image_front_card_number">0000 0000 0000 0000</label>
+        <label id="test" class="image_front_card_number" for="card_number" [textContent]="card_number_content">{{card_number}}</label>
 
        <div class="image_front_card_container">
-            <label class="image_front_card_name">Jane Appleased</label>
-            <label class="image_front_card_date">00/00</label>
+            <label class="image_front_card_name" for="card_holder" >{{card_holder}}</label>
+            <label class="image_front_card_date">{{exp_mm}}/{{exp_yy}}</label>
        </div>
 
     </div>
