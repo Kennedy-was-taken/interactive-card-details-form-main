@@ -9,28 +9,28 @@
     
         <!-- input area -->
         <div class="info-container">
-        
+            
                 <!-- name holder -->
                 <label>cardholder name</label>
                 <input class="cardholder_name" name="card_holder" placeholder="e.g Jane Appleased" maxlength="30" type="text"
-                    [(ngModel)]="card_holder" />
+                    (keyup)="keyFuncHolder($event)"/>
         
                 <!-- number -->
                 <label>card number</label>
-                <input id="card_number_value" class="card_number" name="card_number"  placeholder="e.g 1234 5678 9123 0000" maxlength="16" type="text"
-                    [(ngModel)]="card_number"  />
+                <input id="card_number_value" class="card_number" onlyNumber name="card_number" placeholder="e.g 1234 5678 9123 0000" maxlength="16" type="number"
+               (keyup)="keyFunc($event)"/>
         
                 <!-- date and the cvc -->
                 <div class="date_cvc">
         
                     <!-- mm\yy -->
                     <label class="date">exp. Date (mm/yy)</label>
-                    <input class="mm" placeholder="MM" type="text" name="exp_mm" [(ngModel)]="exp_mm" maxlength="2" />
-                    <input class="yy" placeholder="YY" type="text" name="exp_yy" [(ngModel)]="exp_yy" maxlength="2" />
+                    <input class="mm" placeholder="MM" type="text" name="exp_mm" placeholder="e.g 01" maxlength="2" (keyup)="keyFuncMonth($event)" />
+                    <input class="yy" placeholder="YY" type="text" name="exp_yy" placeholder="e.g 20" maxlength="2" (keyup)="keyFuncYear($event)"/>
         
                     <!-- cvc -->
                     <label class="cvc">cvc</label>
-                    <input class="cvc_digit" type="text" placeholder="e.g 123" maxlength="3" name="cvc" type="text" [(ngModel)]="cvc" />
+                    <input class="cvc_digit" type="text" placeholder="e.g 000" maxlength="3" name="cvc" type="text" (keyup)="keyFuncCvc($event)" />
         
                 </div>
         
