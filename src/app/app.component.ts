@@ -21,14 +21,32 @@ export class AppComponent {
   exp_mm_placeholder: string = '01';
   exp_yy_placeholder: string = '20';
   cvc_placeholder: string = '000';
-  card_value = "";
+
   card_number_content: string = '';
+  card_holder_content: string = '';
+  exp_mm_content: string = '';
+  exp_yy_content: string = '';
+  cvc_content: string = '';
+
+  card_number_value = "";
+  card_holder_value = "";
+  exp_mm_value: string = '';
+  exp_yy_value: string = '';
+  cvc_value: string = '';
+
   card_holder: string = '';
   card_number: string = '';
   exp_mm: string = '';
   exp_yy: string = '';
   cvc: string = '';
+
   counter: number | undefined;
+
+  nameMatches: string[] | undefined;
+  numberMatches: string[] | undefined;
+  monthMatches: string[] | undefined;
+  yearMatches: string[] | undefined;
+  cvcMatches: string[] | undefined;
 
   //public onTimeChange(event: Event): void{
   //     this.exp_mm = (event.target as HTMLInputElement).value;
@@ -39,128 +57,223 @@ export class AppComponent {
 
   }
 
-  public onKeyBackSpace(x: any): void {
-    this.card_number_content = this.card_number_placeholder
+  public keyFuncCardName(x: KeyboardEvent): void {
+    const regex = "[a-zA-Z ]+";
+
+    this.nameMatches = this.card_holder.match(regex) || undefined;
+
+    if (this.nameMatches == undefined) {
+      this.card_holder_value = "";
+      this.card_holder = this.card_holder_value;
+      this.card_holder_content = this.card_holder_placeholder;
+
+    }
+
+    else {
+      this.card_holder_value = this.nameMatches[0];
+      this.card_holder = this.nameMatches[0];
+      this.card_holder_content = this.nameMatches[0];
+    }
+
   }
 
-  public keyFuncCvc(x: any): void {
+  public keyFuncCardCvc(x: KeyboardEvent): void {
+
+    const regex = "[0-9]+";
 
     if (this.cvc.length <= 0) {
-      this.cvc = this.cvc_placeholder;
+      this.cvc_content = this.cvc_placeholder;
+      this.cvc_value = "";
     }
 
-    else {
-      this.cvc = x.target.value;
+    else if (x.key == "Backspace") {
 
-      if (this.cvc.length <= 0) {
-        this.cvc = this.cvc_placeholder;
-      }
-    }
-  }
+      this.cvc_value = this.cvc;
+      this.cvc_content = this.cvc_value;
 
-  public keyFuncYear(x: any): void {
-
-    if (this.exp_yy.length <= 0) {
-      this.exp_yy = this.exp_yy_placeholder;
-    }
-
-    else {
-      this.exp_yy = x.target.value;
-
-      if (this.exp_yy.length <= 0) {
-        this.exp_yy = this.exp_yy_placeholder;
-      }
-    }
-  }
-
-  public keyFuncMonth(x: any): void {
-
-    if (this.exp_mm.length <= 0) {
-      this.exp_mm = this.exp_mm_placeholder;
-    }
-
-    else {
-      this.exp_mm = x.target.value;
-
-      if (this.exp_mm.length <= 0) {
-        this.exp_mm = this.exp_mm_placeholder;
-      }
-    }
-  }
-
-  public keyFuncHolder(x: any): void {
-
-    if (this.card_holder.length <= 0) {
-      this.card_holder = this.card_holder_placeholder;
-    }
-
-    else {
-      this.card_holder = x.target.value;
-
-      if (this.card_holder.length <= 0) {
-        this.card_holder = this.card_holder_placeholder;
-      }
-    }
-  }
-
-  public keyFunc(x: KeyboardEvent): void {
-    console.log(x.key);
-    if (this.card_number_content.length <= 0) {
-      this.card_number_content = this.card_number_placeholder;
-      console.log("one if statements block");
     }
 
     else {
 
-      if (x.key == "Backspace") {
-        console.log(this.card_number_content);
-        this.card_number_content = this.card_number_content.slice(0, -1);
+      this.cvcMatches = this.cvc.match(regex) || undefined;
 
-        if (this.card_number_content.length == 0) {
-          this.card_number_content = this.card_number_placeholder;
-          this.counter = 0;
-          console.log("code block with another if");
-        }
+      //resets
+      if (this.cvcMatches == undefined) {
+        this.cvc_value = "";
+        this.cvc = this.cvc_value;
+        this.cvc_content = this.cvc_placeholder;
+        console.log("returned");
       }
 
-      if (x.key == "1" || x.key == "2" || x.key == "3" || x.key == "4" || x.key == "5" ||
-        x.key == "6" || x.key == "7" || x.key == "8" || x.key == "9" || x.key == "0") {
-        if (this.counter == 0) {
-          this.initCardCapture(x.key);
-        }
-
-        else if (this.card_value.length == 4) {
-          this.card_value += " " + x.key;
-          this.card_number_content = this.card_value;
-        }
-
-        else if (this.card_value.length == 9) {
-          this.card_value += " " + x.key;
-          this.card_number_content = this.card_value;
-        }
-
-        else if (this.card_value.length == 14) {
-          this.card_value += " " + x.key;
-          this.card_number_content = this.card_value;
-        }
-
-        else if (this.card_value.length > 18) {
-
-        }
-
-        else {
-
-          console.log("key : " + x.key + ", key count : " + x.key.length);
-
-          this.card_value += x.key;
-          this.card_number_content = this.card_value;
-        }
-        // this.card_number_content = x.target.value;
-
+      //returns the value back to its previous value if anything but a number is captured
+      else if (this.cvcMatches[0] == this.cvc_value) {
+        this.cvc = this.cvc_value;
+        this.cvc_content = this.cvc_value;
       }
 
       else {
-        this.card_number = this.card_value;
+
+        this.cvc_value += this.cvcMatches[0].charAt(this.cvcMatches[0].length - 1);
+        this.cvc = this.cvc_value;
+        this.cvc_content = this.cvc_value;
+
+      }
+    }
+  }
+
+  public keyFuncCardYear(x: KeyboardEvent): void {
+
+    const regex = "[0-9]+";
+
+    if (this.exp_yy.length <= 0) {
+      this.exp_yy_content = this.exp_yy_placeholder;
+      this.exp_yy_value = "";
+    }
+
+    else if (x.key == "Backspace") {
+
+      this.exp_yy_value = this.exp_yy;
+      this.exp_yy_content = this.exp_yy_value;
+
+    }
+
+    else {
+
+      this.yearMatches = this.exp_yy.match(regex) || undefined;
+
+      //resets
+      if (this.yearMatches == undefined) {
+        this.exp_yy_value = "";
+        this.exp_yy = this.exp_yy_value;
+        this.exp_yy_content = this.exp_yy_placeholder;
+        console.log("returned");
+      }
+
+      //returns the value back to its previous value if anything but a number is captured
+      else if (this.yearMatches[0] == this.exp_yy_value) {
+        this.exp_yy = this.exp_yy_value;
+        this.exp_yy_content = this.exp_yy_value;
+      }
+
+      else {
+
+        this.exp_yy_value += this.yearMatches[0].charAt(this.yearMatches[0].length - 1);
+        this.exp_yy = this.exp_yy_value;
+        this.exp_yy_content = this.exp_yy_value;
+
+      }
+    }
+  }
+
+  public keyFuncCardMonth(x: KeyboardEvent): void {
+
+    const regex = "[0-9]+";
+
+    if (this.exp_mm.length <= 0) {
+      this.exp_mm_content = this.exp_mm_placeholder;
+      this.exp_mm_value = "";
+    }
+
+    else if (x.key == "Backspace") {
+
+      this.exp_mm_value = this.exp_mm;
+      this.exp_mm_content = this.exp_mm_value;
+
+    }
+
+    else {
+
+      this.monthMatches = this.exp_mm.match(regex) || undefined;
+
+      //resets
+      if (this.monthMatches == undefined) {
+        this.exp_mm_value = "";
+        this.exp_mm = this.exp_mm_value;
+        this.exp_mm_content = this.exp_mm_placeholder;
+      }
+
+      //returns the value back to its previous value if anything but a number is captured
+      else if (this.monthMatches[0] == this.exp_mm_value) {
+        this.exp_mm = this.exp_mm_value;
+        this.exp_mm_content = this.exp_mm_value;
+      }
+
+      else {
+
+        this.exp_mm_value += this.monthMatches[0].charAt(this.monthMatches[0].length - 1);
+
+        //checks to see if the month isn't larger than 12
+        if (parseInt(this.exp_mm_value) > 12) {
+
+          this.exp_mm_value = "12";
+          this.exp_mm = this.exp_mm_value;
+          this.exp_mm_content = this.exp_mm_value;
+        }
+
+        else {
+          this.exp_mm = this.exp_mm_value;
+          this.exp_mm_content = this.exp_mm_value;
+        }
+
+      }
+    }
+
+  }
+
+  public keyFuncCardNumber(x: KeyboardEvent): void {
+
+    const regex = "[0-9 ]+";
+
+    if (this.card_number.length <= 0) {
+      this.card_number_content = this.card_number_placeholder;
+      this.card_number_value = "";
+    }
+
+    else if (x.key == "Backspace") {
+
+      if (this.card_number_content.charAt(this.card_number_content.length - 2) == " ") //checks if the last character is a space
+      {
+        this.card_number_value = this.card_number_value.slice(0, -2)
+        this.card_number = this.card_number_value;
+        this.card_number_content = this.card_number_value;
+      }
+
+      else {
+        this.card_number_value = this.card_number;
+        this.card_number_content = this.card_number_value;
+      }
+
+    }
+
+    else {
+
+      this.numberMatches = this.card_number.match(regex) || undefined;
+
+      //resets
+      if (this.numberMatches == undefined) {
+        this.card_number_value = "";
+        this.card_number = this.card_number_value;
+        this.card_number_content = this.card_number_placeholder;
+      }
+
+      //returns the value back to its previous value if anything but a number is captured
+      else if (this.numberMatches[0] == this.card_number_value) {
+        this.card_number = this.card_number_value;
+        this.card_number_content = this.card_number_value;
+      }
+
+      //adds a space after the 4th, 10th and 15th Character
+      else if (this.numberMatches[0].length == 5 || this.numberMatches[0].length == 10 || this.numberMatches[0].length == 15) {
+        this.card_number_value += " " + this.numberMatches[0].charAt(this.numberMatches[0].length - 1);
+        this.card_number = this.card_number_value;
+        this.card_number_content = this.card_number_value;
+      }
+
+      else {
+        console.log(this.numberMatches[0].charAt(this.numberMatches[0].length - 1));
+        this.card_number_value += this.numberMatches[0].charAt(this.numberMatches[0].length - 1);
+        this.card_number = this.card_number_value;
+        this.card_number_content = this.card_number_value;
       }
 
     }
@@ -169,8 +282,8 @@ export class AppComponent {
 
   public initCardCapture(key: string): void {
     this.counter = 1;
-    this.card_value = key;
-    this.card_number_content = this.card_value;
+    this.card_number_value = key;
+    this.card_number_content = this.card_number_value;
     console.log("statements block");
   }
 
@@ -178,24 +291,14 @@ export class AppComponent {
 
     this.card_number_content = this.card_number_placeholder;
 
-    this.card_holder = this.card_holder_placeholder;
+    this.card_holder_content = this.card_holder_placeholder;
 
-    this.cvc = this.cvc_placeholder;
+    this.cvc_content = this.cvc_placeholder;
 
-    this.exp_yy = this.exp_yy_placeholder;
+    this.exp_yy_content = this.exp_yy_placeholder;
 
-    this.exp_mm = this.exp_mm_placeholder;
+    this.exp_mm_content = this.exp_mm_placeholder;
 
   }
 
-  //adds an event lisener to the card_number
-  // card_number.addEventListener('keydown', function(event){
-
-  // });
-
-  //   // Add an event listener to the input
-  //   card_number.addEventListener('input', function() {
-  //   // Update the label's textContent to match the input value
-  //   label.textContent = input.value;
-  // });
 }
